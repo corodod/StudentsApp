@@ -1,0 +1,24 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:StudentApp.ViewModels"
+        x:Class="StudentApp.Views.MainWindow"
+        Title="Student App">
+
+    <Design.DataContext>
+        <vm:StudentViewModel />
+    </Design.DataContext>
+
+    <StackPanel Margin="10" x:DataType="vm:StudentViewModel">
+        <TextBox Text="{Binding LastName}" Watermark="Фамилия" />
+        <TextBox Text="{Binding FirstName}" Watermark="Имя" />
+        <DatePicker SelectedDate="{Binding BirthDate}" />
+        <TextBox Text="{Binding Course}" Watermark="Курс" />
+        <TextBox Text="{Binding Group}" Watermark="Группа" />
+
+        <Button Content="Рассчитать средний балл" Command="{Binding CalculateAverageGradeCommand}" />
+        <Button Content="Рассчитать средний балл по предмету" Command="{Binding CalculateAverageGradeBySubjectCommand}" />
+        <Button Content="Получить список задолженностей" Command="{Binding GetFailedSubjectsCommand}" />
+
+        <TextBlock Text="{Binding Result}" Margin="0,10,0,0" />
+    </StackPanel>
+</Window>
