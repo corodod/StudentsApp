@@ -8,16 +8,16 @@ namespace StudentApp.Models
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTimeOffset BirthDate { get; set; } // Изменено на DateTimeOffset
         public int Course { get; set; }
         public string Group { get; set; }
         private Dictionary<int, Dictionary<string, List<int>>> Grades { get; set; }
 
-        public Student(string lastName, string firstName, DateTime birthDate, int course, string group, Dictionary<int, Dictionary<string, List<int>>> subjects)
+        public Student(string lastName, string firstName, DateTimeOffset birthDate, int course, string group, Dictionary<int, Dictionary<string, List<int>>> subjects)
         {
             LastName = lastName;
             FirstName = firstName;
-            BirthDate = birthDate;
+            BirthDate = birthDate; // Изменено на DateTimeOffset
             Course = course;
             Group = group;
             Grades = subjects;

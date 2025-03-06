@@ -4,9 +4,9 @@
         x:Class="StudentApp.Views.MainWindow"
         Title="Student App">
 
-    <Design.DataContext>
+    <Window.DataContext>
         <vm:StudentViewModel />
-    </Design.DataContext>
+    </Window.DataContext>
 
     <StackPanel Margin="10" x:DataType="vm:StudentViewModel">
         <TextBox Text="{Binding LastName}" Watermark="Фамилия" />

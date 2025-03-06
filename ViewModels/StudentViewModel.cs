@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Input;
 using StudentApp.Models;
+using System.Collections.Generic;
 
 namespace StudentApp.ViewModels
 {
@@ -32,7 +33,7 @@ namespace StudentApp.ViewModels
             }
         }
 
-        public DateTime BirthDate
+        public DateTimeOffset BirthDate
         {
             get => _student.BirthDate;
             set
@@ -76,6 +77,13 @@ namespace StudentApp.ViewModels
         public ICommand CalculateAverageGradeBySubjectCommand { get; }
         public ICommand GetFailedSubjectsCommand { get; }
 
+        // Конструктор без параметров
+        public StudentViewModel()
+            : this(new Student("", "", DateTimeOffset.Now, 0, "", new Dictionary<int, Dictionary<string, List<int>>>()))
+        {
+        }
+
+        // Основной конструктор
         public StudentViewModel(Student student)
         {
             _student = student;

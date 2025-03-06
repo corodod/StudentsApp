@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
@@ -6,6 +7,8 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using StudentApp.ViewModels;
 using StudentApp.Views;
+using StudentApp.Models;
+using System.Collections.Generic;
 
 namespace StudentApp;
 
@@ -23,9 +26,20 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
+
+            // Создаем экземпляр Student и передаем его в StudentViewModel
+            var student = new Student(
+                "Иванов", 
+                "Иван", 
+                DateTimeOffset.Now, // Используем DateTimeOffset
+                1, 
+                "Группа 101", 
+                new Dictionary<int, Dictionary<string, List<int>>>()
+            );
+
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = new StudentViewModel(student), // Передаем DataContext через код
             };
         }
 
